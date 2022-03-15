@@ -1,0 +1,24 @@
+body[data-breakpoint='mobile'] {
+    footer {
+        text-align: center;
+    }
+    
+    .input-group-responsive {
+        .btn {
+            display: block;
+            width: 100%;
+            margin-top: 0.5em;
+            border-radius: 2em !important;
+        }
+        .input-group-text + .form-control {
+            border-top-right-radius: 2em !important;
+            border-bottom-right-radius: 2em !important;
+        }
+    }
+}
+
+body[data-breakpoint='tablet'] {
+}
+
+body[data-breakpoint='desktop'] {
+}
