@@ -6,7 +6,7 @@
       <div class="container">
         <router-link class="navbar-brand me-2 me-lg-3" to="/">
           <img class="invert-dark logo" height="48" width="48" alt="Less Borders Logo" src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"/>
-            &nbsp;<span class="h6"><span class="text-gradient">Cloud</span></span>
+          <span class="h6 ms-2"><span class="text-gradient">Cloud</span></span>
         </router-link>
 
         <!-- Desktop Menu -->

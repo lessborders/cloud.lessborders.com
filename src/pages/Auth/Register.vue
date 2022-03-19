@@ -1,10 +1,11 @@
 <template>
-  <div class="page-container mb-auto">
-  </div>
+    <div class="page-container mb-auto">
+        hi
+    </div>
 </template>
 
 <script>
-  export default {
-    name: "Sign up"
-  };
+    export default {
+        name: "Sign in"
+    };
 </script>

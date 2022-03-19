@@ -3,7 +3,7 @@
     <metainfo>
       <template v-slot:title="{ content }">{{ content ? `${content} · cloud · less borders` : `Cloud · less borders` }}</template>
     </metainfo>
-    <Header/>
+    <Header v-if="this.$store.state.isUserLoggedIn"/>
     <router-view>
     </router-view>
     <Footer/>

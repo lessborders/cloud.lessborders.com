@@ -90,6 +90,7 @@ html, body, #app {
 }
 
 footer {
+  border-top: 1px solid var(--lb-border-color);
   a {
     color: #999;
     text-decoration: none;
@@ -123,8 +124,6 @@ footer {
   width: 420px;
 }
 
-
-
 .rounded {
   border-radius: 2rem;
 
@@ -157,4 +156,13 @@ footer {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-box-decoration-break: clone;
+}
+
+.meta {
+  color: var(--lb-meta-color);
+}
+
+.small-container {
+  max-width: 400px;
+  margin: 0 auto;
 }

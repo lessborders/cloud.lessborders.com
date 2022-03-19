@@ -1,8 +1,7 @@
 import { createApp } from "vue";
-import { createStore } from "vuex";
-import { router } from "./router";
-import { store } from "./store";
 import { createMetaManager } from 'vue-meta';
+import { router } from "./router";
+import store from "./store";
 import axios from 'axios';
 
 import "./darkToggle";
@@ -28,8 +27,8 @@ app.component("Footer", Footer);
 app.component("darkToggle", darkToggle);
 app.component("productDropdown", productDropdown);
 
-app.use(createStore(store));
 app.use(router);
+app.use(store);
 app.use(createMetaManager());
 app.config.globalProperties.$http = axios;
 
