@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const Home = () => import(/* webpackChunkName: "home" */ './pages/Home.vue');
-const Orders = () => import(/* webpackChunkName: "home" */ './pages/Orders/Orders.vue');
-const Order= () => import(/* webpackChunkName: "home" */ './pages/Orders/Order.vue');
+const Home = () => import('./pages/Home.vue');
+const Login = () => import('./pages/Auth/Login.vue')
+const Register = () => import('./pages/Auth/Register.vue')
+const Orders = () => import('./pages/Orders/Orders.vue');
+const Order = () => import('./pages/Orders/Order.vue');
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -11,7 +13,19 @@ export const router = createRouter({
       path: "/",
       name: "home",
       component: Home,
-    },,
+    },
+    {
+      path: "/auth/signin/",
+      name: "login",
+      component: Login,
+      props: true,
+    },
+    {
+      path: "/auth/signup/",
+      name: "login",
+      component: Register,
+      props: true,
+    },
     {
       path: "/orders/",
       name: "orders",
