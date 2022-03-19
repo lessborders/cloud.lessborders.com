@@ -17,4 +17,15 @@ body[data-theme='dark'] {
     img[src*="lessborders_logo"] {
         filter: brightness(6.5);
     }
+
+    .form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
+        color: var(--lb-text-color);
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 300px #1d201d inset !important;
+        -webkit-text-fill-color: var(--lb-text-color) !important;
+    }
 }
