@@ -9,7 +9,7 @@ body[data-theme='dark'] {
     --lb-text-color: #FFF;
   
     --lb-card-bg: #1B1B1B;
-    --lb-border-color: #1F1F1F;
+    --lb-border-color: #2A2A2A;
 
     --lb-input-bg: #333;
 
@@ -25,7 +25,7 @@ body[data-theme='dark'] {
     input:-webkit-autofill:hover, 
     input:-webkit-autofill:focus, 
     input:-webkit-autofill:active  {
-        -webkit-box-shadow: 0 0 0 300px #1d201d inset !important;
+        -webkit-box-shadow: 0 0 0 300px #353835 inset !important;
         -webkit-text-fill-color: var(--lb-text-color) !important;
     }
 }

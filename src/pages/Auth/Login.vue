@@ -6,7 +6,7 @@
                 in <strong class="text-gradient">one</strong> place
             </div>
         </div>
-        <div class="col-12 col-lg-6 col-xl-5 text-center p-3 card-bg d-flex position-relative">
+        <div class="col-12 col-lg-6 col-xl-5 text-center p-3 card-bg d-flex position-relative vh-min-100">
             <div class="d-flex position-absolute p-3" style="top:0;left:0;right:0;">  
                 <darkToggle class="ms-auto"/>
             </div>
@@ -16,19 +16,21 @@
 
                 <h5>Sign in</h5>
                 <p>With your <span class="text-gradient">Cloud</span> account</p>
+                
+                <p class="text-red small" v-if="error">{{ error }}</p>
                 <form v-on:submit.prevent="login">
                         
                     <div class="form-floating mb-2">
-                        <input v-model="email" name="email" type="email" class="form-control" placeholder="Email"/>
+                        <input v-model="email" name="email" type="email" class="form-control" placeholder="Email" required/>
                         <label for="email">Email</label>
                     </div>
 
                     <div class="form-floating mb-2">
-                        <input v-model="password" name="password" type="password" class="form-control" placeholder="Password"/>
+                        <input v-model="password" name="password" type="password" class="form-control" placeholder="Password" required/>
                         <label for="password">Password</label>
                     </div>
                     <div class="mt-3 text-end">
-                        <button type="submit" class="btn btn-primary">Sign in <i class="fa-regular fa-angle-right ms-1"></i></button>
+                        <button :disabled="loading" type="submit" class="btn btn-primary"><span v-if="loading" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Sign in <i class="fa-regular fa-angle-right ms-1"></i></button>
                     </div>
                 </form>
             </div>
@@ -45,22 +47,34 @@
                 redirect_url: new URL(location.href).searchParams.get('redirect_url'),
                 email: '',
                 password: '',
-                error: null
+                error: null,
+                loading: false
             }
         },
-         methods: {
+        methods: {
             async login () {
                 try {
-                    // Keep track of responses return from a server
-                    // Set token and user based on those responses
+                    this.error = null
+                    this.loading = true;
+
                     const response = await authenticationService.login({
                         email: this.email,
                         password: this.password
                     })
-                    // setToken and setUser based on whatever return from the login endpoint
-                    this.$store.dispatch('setToken', response.data.token)
-                    this.$store.dispatch('setUser', response.data.user)
-                    window.location.href = this.redirect_url
+                    if( !response.data.error ) {
+                        this.$store.dispatch('setToken', response.data.token)
+                        this.$store.dispatch('setUser', response.data.user)
+                        setTimeout(() => {
+                            this.error = null
+                            this.loading = false
+                            window.location.href = this.redirect_url
+                        }, 500)
+                    }else{
+                        setTimeout(() => {
+                            this.error = response.data.error
+                            this.loading = false
+                        }, 500)
+                    }
                 } catch (err) {
                     console.log(err)
                 }

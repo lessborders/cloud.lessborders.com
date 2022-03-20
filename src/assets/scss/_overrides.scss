@@ -16,6 +16,12 @@
       outline: none !important;
       box-shadow: none !important;
     }
+    
+    &:disabled {
+      background-color: var(#{$value}) !important;
+      color: #FFF !important;
+      opacity: 0.5;
+    }
   }
 }
 
@@ -60,8 +66,9 @@ a {
   color: var(--lb-text-color);
 }
 
-.card-bg {
+.card-bg, .card {
   background-color: var(--lb-card-bg);
+  transition: background-color 0.15s linear;
 }
 
 .table {
