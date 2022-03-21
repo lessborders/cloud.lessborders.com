@@ -6,8 +6,9 @@
                 in <strong class="text-gradient">one</strong> place
             </div>
         </div>
-        <div class="col-12 col-lg-6 col-xl-5 text-center p-3 card-bg d-flex position-relative vh-min-100">
+        <div class="col-12 col-lg-6 col-xl-5 text-center p-3 pb-5 card-bg d-flex position-relative vh-min-100">
             <div class="d-flex position-absolute p-3" style="top:0;left:0;right:0;">  
+                <a v-if="previous_url" :href="previous_url" class="btn btn-transparent px-3 me-auto"><i class="fa-regular fa-arrow-left-long"></i></a>
                 <darkToggle class="ms-auto"/>
             </div>
             <div class="small-container m-auto col pt-3 pb-5">
@@ -45,6 +46,7 @@
         data () {
             return {
                 redirect_url: new URL(location.href).searchParams.get('redirect_url'),
+                previous_url: new URL(location.href).searchParams.get('previous_url'),
                 email: '',
                 password: '',
                 error: null,
