@@ -9,6 +9,7 @@
     &:hover {
       background-color: var(#{$value}-highlight) !important;
       border-radius: 0.5rem 2rem 2rem 2rem !important;
+      color: #FFF;
     }
 
     &:focus {
@@ -97,6 +98,8 @@ a {
   transition: 0.1s all ease-out;
   border-bottom: 1px solid var(--lb-border-color);
   box-shadow: var(--lb-box-shadow);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 
   .nav-link {
     padding-right: 0.75rem !important;
@@ -153,14 +156,14 @@ a {
 .form-control, .input-group-text {
   background: var(--lb-input-bg);
   color: var(--lb-text-color);
-  border-color: transparent;
+  border-color: var(--lb-border-color);
   box-shadow: none !important;
 }
 
 .form-control:hover, .form-control:focus {
   background: var(--lb-input-bg);
   color: var(--lb-text-color);
-  border-color: transparent;
+  border-color: var(--lb-border-color);
 }
 
 .input-group-text, .form-control::placeholder {
@@ -173,23 +176,4 @@ a {
 
 hr {
   background-color: var(--lb-border-color);
-}
-
-.form-floating .form-select, .form-floating .form-control {
-  border: none;
-  border-bottom: 1px solid var(--lb-border-color);
-  border-color: var(--lb-border-color);
-  border-radius: 0;
-}
-.form-floating .form-select:focus, .form-floating .form-control:focus {
-  box-shadow: inset 0 -1px 0  var(--lb-primary);
-  border-color: var(--lb-primary);
-}
-.form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
-  color: var(--lb-primary);
-  transform: scale(0.85) translateY(-0.75rem) translateX(0.1rem) !important;
-}
-.form-floating > .form-control, .form-floating > .form-select {
-  height: calc(3.25rem + 2px);
-  background: transparent !important;
 }

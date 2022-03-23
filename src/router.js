@@ -76,6 +76,13 @@ export const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  let cloudBaseUrl = null
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+    cloudBaseUrl = 'http://localhost:3010'
+  }else{
+    cloudBaseUrl = 'https://cloud.lessborders.com'
+  }
+
   let toFullPath = new URL(to.fullPath, window.location.href).href
   let overridePrev = false
   if(to.name == "login") {
@@ -89,7 +96,7 @@ router.beforeEach((to, from, next) => {
     // if not authorized, redirect to login page.
     if (!store.state.isLoggedIn) {
       console.log(store.state.isUserLoggedIn)
-      newUrl = 'https://cloud.lessborders.com/auth/signin/?redirect_url=' + toFullPath
+      newUrl = cloudBaseUrl + '/auth/signin/?redirect_url=' + toFullPath
       if(toFullPath != fromFullPath || overridePrev) {
         newUrl += '&previous_url=' + fromFullPath
       }

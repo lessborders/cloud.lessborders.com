@@ -90,7 +90,6 @@ html, body, #app {
 }
 
 footer {
-  border-top: 1px solid var(--lb-border-color);
   a {
     color: #999;
     text-decoration: none;
@@ -112,7 +111,7 @@ footer {
 }
 
 .page-container {
-  padding-top: 70px;
+  padding-top: 63px;
 
   &.full-page {
     padding-top: 0;
@@ -163,10 +162,23 @@ footer {
 }
 
 .small-container {
-  max-width: 400px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
 .vh-min-100 {
   min-height: 100vh;
+}
+
+#page {
+  width: 100%;
+  .page-container {
+    width: 100%;
+  }
+}
+
+.top-bar {
+  top:0;
+  left:0;
+  right:0;
 }
