@@ -1,0 +1,51 @@
+{
+  "name": "lessborders.com",
+  "version": "0.1.0",
+  "description": "Lessborders.com GitHub repo",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lessborders/lessborders.com"
+  },
+  "author": "lessborders",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "postinstall": "husky install",
+    "lint": "eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "postcss-loader": "^6.2.1",
+    "bootstrap": "5.1.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@iconify/json": "^1.1.456",
+    "@intlify/nuxt3": "^0.1.10",
+    "@nuxtjs/eslint-config-typescript": "^7.0.2",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@pinia/nuxt": "^0.1.8",
+    "@vueuse/nuxt": "7.6.2",
+    "axios": "0.26.1",
+    "currency.js": "2.0.4",
+    "eslint": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.3",
+    "nuxt3": "3.0.0-27478712.3238038",
+    "pinia": "^2.0.9",
+    "postcss": "8.4.7",
+    "sass": "1.49.9",
+    "sass-loader": "^12.4.0",
+    "typescript": "^4.5.2"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue,html,css,scss}": [
+      "yarn lintfix"
+    ]
+  }
+}

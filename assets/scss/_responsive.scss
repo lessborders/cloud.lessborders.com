@@ -1,0 +1,41 @@
+@media only screen and (max-width: 576px) {
+    footer {
+        text-align: center;
+    }
+    
+    .input-group-responsive {
+        .btn {
+            display: block;
+            width: 100%;
+            margin-top: 0.5em;
+            border-radius: 2em !important;
+        }
+        .input-group-text + .form-control {
+            border-top-right-radius: 2em !important;
+            border-bottom-right-radius: 2em !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) { 
+    .navbar {
+        .nav-link {
+            padding: 1.25rem 1rem !important;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar {
+        .nav-link {
+            padding: 1.5rem 1rem !important;
+        }
+    }
+    
+    .page-container {
+        padding-top: 67px;
+    }
+    .offcanvas .offcanvas-header {
+        padding: 0.8rem 1rem;
+    }
+}

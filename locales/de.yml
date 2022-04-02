@@ -1,0 +1,60 @@
+components:
+  settings:
+    title: Einstellungen
+  language_switcher:
+    change_language: Sprache
+    en: English
+    de: Deutsch
+  theme_switcher:
+    theme: Theme
+    change_theme: Theme
+    light: Hell
+    dark: Dunkel
+    system: System
+  footer:
+    connect_with_us: Finden Sie uns auf
+pages:
+  index:
+    title: Startseite
+  services:
+    nav: Leistungen
+    title: Leistungen
+  login:
+    nav: Einloggen
+  contact:
+    nav: Kontakt
+    title: Kontakt
+  legal:
+    nav: Impressum
+    title: Impressum
+    terms:
+      nav:  AGB
+      title: Allgemeine Geschäftsbediungen (AGB)
+    privacy:
+      nav: Datenschutz
+      title: Datenschutzerklärung von
+  signup:
+    nav: Konto erstellen
+    title: Erstellen Sie ein
+    title2: Konto
+    closed: Registrierung ist derzeit geschlossen
+    signin: Ich habe ein Konto
+    forgot_password: Password vergessen?
+  signin:
+    title: Anmeldung
+    subtitle1: mit Ihrem
+    subtitle2: Konto
+    hero_title: Alle
+    hero_title2: Ihre Apps
+    hero_title3: an
+    hero_title4: einem
+    hero_title5: Ort
+    hint1: Öffentliches Netzwerk? Versuchen Sie es mit einem privaten Browserfenster.
+forms:
+  email: E-Mail
+  password: Passwort
+actions:
+  submit: Submit
+  save: Speichern
+  next: Weiter
+  send: Schicken

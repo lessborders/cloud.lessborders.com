@@ -1,0 +1,60 @@
+components:
+  settings:
+    title: Settings
+  language_switcher:
+    change_language: Language
+    en: English
+    de: Deutsch
+  theme_switcher:
+    theme: Theme
+    change_theme: Theme
+    light: Light
+    dark: Dark
+    system: System
+  footer:
+    connect_with_us: Connect with us
+pages:
+  index:
+    title: Homepage
+  services:
+    nav: Services
+    title: Services
+  login:
+    nav: Sign in
+  contact:
+    nav: Contact
+    title: Contact
+  legal:
+    nav: Legal notice
+    title: Legal notice
+    terms:
+      nav: Terms of Service
+      title: Terms of Service
+    privacy:
+      nav: Privacy policy
+      title: Data protection declaration of
+  signup:
+    nav: Create account
+    title: Create your
+    title2: account
+    closed: Registration is currently closed
+    signin: Sign in instead
+    forgot_password: Forgot password?
+  signin:
+    title: Sign in
+    subtitle1: With your
+    subtitle2: account
+    hero_title: All
+    hero_title2: your apps
+    hero_title3: in
+    hero_title4: one
+    hero_title5: place
+    hint1: Public network? Try using a private browsing window.
+forms:
+  email: Email
+  password: Password
+actions:
+  submit: Submit
+  save: Save
+  next: Next
+  send: Send
