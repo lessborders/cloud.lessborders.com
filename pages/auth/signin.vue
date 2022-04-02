@@ -70,7 +70,7 @@
 </template>
 
 <script>
-  import authenticationService from '../../../services/AuthenticationService.js'
+  import authenticationService from '../../services/AuthenticationService'
 
   export default {
     setup () {
