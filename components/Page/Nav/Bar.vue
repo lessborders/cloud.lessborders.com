@@ -1,19 +1,16 @@
 <template>
-  <BuilderNavbar>
+  <PageBuilderNavbar>
     <template #menu>
       <div id="navbarNav" class="d-none d-lg-block">
         <!-- Desktop Menu -->
         <ul class="navbar-nav me-auto">
-          <li v-for="(item, i) in menus" :key="i" class="nav-item mx-1">
-            <Anchor
-              v-if="item.type === 'link' && !item.children"
-              :to="item.route ? item.route : undefined"
-              :href="item.href ? item.href : undefined"
-              class="nav-link"
-            >
-              <span>{{ item.text }}</span>
-            </Anchor>
-          </li>
+          <PageNavLink
+            v-for="(item, i) in menus"
+            :key="i"
+            :item="item"
+            class="mx-1 nav-item"
+            classes="nav-link"
+          />
         </ul>
       </div>
 
@@ -62,21 +59,17 @@
             class="nav flex-column"
             style="list-style: none"
           >
-            <li v-for="(item, i) in menus" :key="i">
-              <Anchor
-                v-if="item.type === 'link' && !item.children"
-                :to="item.route ? item.route : undefined"
-                :href="item.href ? item.href : undefined"
-                class="dropdown-item mobileMenuToggle"
-              >
-                {{ item.text }}
-              </Anchor>
-            </li>
+            <PageNavLink
+              v-for="(item, i) in menus"
+              :key="i"
+              :item="item"
+              classes="dropdown-item mobileMenuToggle"
+            />
           </ul>
         </div>
       </div>
     </template>
-  </BuilderNavbar>
+  </PageBuilderNavbar>
 </template>
 
 <script lang="ts" setup>

@@ -7,7 +7,10 @@ export default defineNuxtRouteMiddleware((to, from) => {
         location.hostname === 'localhost' ||
         location.hostname === '127.0.0.1'
       ) {
-        cloudBaseUrl = 'http://localhost:4001'
+        cloudBaseUrl = window.location.protocol + '//' + window.location.hostname
+        if(window.location.port) {
+          cloudBaseUrl += ":" + window.location.port
+        }
       } else {
         cloudBaseUrl = 'https://cloud.lessborders.com'
       }

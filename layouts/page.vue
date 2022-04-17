@@ -4,7 +4,7 @@
     <div id="app-before"></div>
     <div class="d-flex flex-column m-vh-100">
       <slot name="header">
-        <PageNavbar />
+        <PageNavBar />
       </slot>
       <main id="page" class="d-flex col mx-auto">
         <slot />

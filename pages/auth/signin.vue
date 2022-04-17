@@ -128,11 +128,16 @@
             this.error = null
             this.success = true
             if( !response.data.error ) {
-              //this.$store.dispatch('setToken', response.data.token)
-              //this.$store.dispatch('setUser', response.data.user)
+              localStorage.setItem('jwtkn', response.data.token)
               setTimeout(() => {
                 if(process.client) {
-                  window.location.href = this.redirect_url
+                  if(!this.redirectUrl) {
+                    this.redirectUrl = window.location.protocol + '//' + window.location.hostname
+                    if(window.location.port) {
+                      this.redirectUrl += ":" + window.location.port
+                    }
+                  }
+                  window.location.href = this.redirectUrl
                 }
               }, 200)
             }else{

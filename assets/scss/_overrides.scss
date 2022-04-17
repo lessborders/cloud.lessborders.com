@@ -6,6 +6,7 @@
     transition: border-radius 0.15s linear;
     color: #FFF;
     line-height: 1.75;
+    font-weight: 300;
     
     &:hover {
       background-color: var(#{$value}-highlight) !important;
@@ -55,6 +56,7 @@ body {
   color: var(--lb-text-color);
   word-break: break-word;
   overflow-x: hidden;
+  font-weight: 300;
 }
 
 a {
@@ -79,6 +81,13 @@ a {
 
 .card-bg, .card {
   background-color: var(--lb-card-bg);
+  border: none;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+a.card:hover {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  transform: translate3d(0, -2px, 0);
 }
 
 .table {
@@ -134,14 +143,25 @@ a {
 nav {
   &.navbar--hidden  {
     .navbar {
-      box-shadow: none;
       top: -75px;
     }
   }
 
+  &.sticky {
+    .navbar {
+
+      &:not(.navbar--hidden) {
+      }
+    }
+  }
+
   .navbar {
-    transition: 0.2s top ease-out;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: var(--lb-card-bg);
     box-shadow: var(--lb-box-shadow);
+    transition: 0.2s top ease-out;
     padding-top: 0;
     padding-bottom: 0;
 
@@ -164,9 +184,25 @@ nav {
       left:0; 
       right:0; 
       width:100%; 
+      padding: 0.5rem;
       background: var(--lb-card-bg);
       max-height: calc(100vh - 75px);
       overflow:auto;
+      position: absolute;
+      border: none;
+
+      &.show {
+        display: flex;
+        justify-content: space-around;
+        gap: 0.75rem;
+      }
+      > li {
+        flex:1;
+
+        .dropdown-item {
+          border-radius: 5px !important;
+        }
+      }
     }
   }
 }
@@ -232,6 +268,7 @@ hr {
   padding: 0.625rem 1rem;
   color: var(--lb-text-color);
   cursor: pointer;
+  font-weight: 300;
 
   &:hover,
   &:focus,
@@ -251,6 +288,10 @@ hr {
   }
 }
 
+ul.collapse, ul.collapsing {
+  padding-left: 0;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -264,3 +305,4 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
