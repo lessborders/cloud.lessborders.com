@@ -1,20 +1,19 @@
 <template>
   <div>
-    <div
+    <v-list-item
       v-for="theme in availableThemes"
       :key="theme.key"
       :value="theme.key"
-      class="dropdown-item"
       :class="{
-        active: themeSetting == theme.key,
+        'v-list-item--active': themeSetting == theme.key,
       }"
       @click="themeSetting = theme.key"
     >
-      <i v-if="theme.key === 'light'" class="fa-regular fa-sun-bright" />
-      <i v-if="theme.key === 'dark'" class="fa-regular fa-moon" />
-      <i v-if="theme.key === 'system'" class="fa-regular fa-laptop" />
+      <v-icon v-if="theme.key === 'light'" icon="fa-regular fa-sun-bright" />
+      <v-icon v-if="theme.key === 'dark'" icon="fa-regular fa-moon" />
+      <v-icon v-if="theme.key === 'system'" icon="fa-regular fa-laptop" />
       {{ $t('components.theme_switcher.' + theme.key) }}
-    </div>
+    </v-list-item>
   </div>
 </template>
 

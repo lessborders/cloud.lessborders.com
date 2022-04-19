@@ -1,7 +1,7 @@
 <template>
-  <div class="text-2xl font-semibold mb-1">
+  <h1>
     <slot>{{ text }}</slot>
-  </div>
+  </h1>
 </template>
 
 <script lang="ts" setup>

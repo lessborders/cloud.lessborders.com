@@ -37,7 +37,7 @@ pages:
     nav: Konto erstellen
     title: Erstellen Sie ein
     title2: Konto
-    closed: Registrierung ist derzeit geschlossen
+    closed: Registrierung ist geschlossen
     signin: Ich habe ein Konto
     forgot_password: Password vergessen?
   signin:

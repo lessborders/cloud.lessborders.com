@@ -1,18 +1,17 @@
 <template>
   <div>
-    <div
+    <v-list-item
       v-for="lang in availableLocales"
       :key="lang.iso"
       :value="lang.iso"
-      class="dropdown-item"
       :class="{
-        active: localeSetting == lang.iso,
+        'v-list-item--active': localeSetting == lang.iso,
       }"
       @click="localeSetting = lang.iso"
     >
       <i class="small">{{ lang.iso }}</i>
       {{ lang.name }}
-    </div>
+    </v-list-item>
   </div>
 </template>
 

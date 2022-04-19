@@ -1,41 +1,31 @@
 <template>
-  <div>
-    <button
-      class="dropdown-item collapsable d-flex"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#themeSwitcherCollapse"
-      aria-expanded="false"
-      aria-controls="themeSwitcherCollapse"
-    >
-      {{ $t('components.theme_switcher.change_theme') }}
-      <small class="ms-auto my-auto">
-        ({{ $t('components.theme_switcher.' + themeSetting) }})
-      </small>
-    </button>
-    <div id="themeSwitcherCollapse" class="collapse">
+  <v-list>
+    <v-list-group>
+      <template #activator="{ props }">
+        <v-list-item v-bind="props" :append-icon="null" nuxt>
+          {{ $t('components.theme_switcher.change_theme') }}
+          <small class="ms-auto my-auto">
+            ({{ $t('components.theme_switcher.' + themeSetting) }})
+          </small>
+        </v-list-item>
+      </template>
       <SettingsThemeSwitcher />
-    </div>
+    </v-list-group>
 
-    <hr class="dropdown-divider" />
+    <v-divider />
 
-    <button
-      class="dropdown-item collapsable d-flex"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#localeSwitcherCollapse"
-      aria-expanded="false"
-      aria-controls="localeSwitcherCollapse"
-    >
-      {{ $t('components.language_switcher.change_language') }}
-      <small class="ms-auto my-auto">
-        ({{ $t('components.language_switcher.' + localeSetting) }})
-      </small>
-    </button>
-    <div id="localeSwitcherCollapse" class="collapse">
+    <v-list-group>
+      <template #activator="{ props }">
+        <v-list-item v-bind="props" :append-icon="null" nuxt>
+          {{ $t('components.language_switcher.change_language') }}
+          <small class="ms-auto my-auto">
+            ({{ $t('components.language_switcher.' + localeSetting) }})
+          </small>
+        </v-list-item>
+      </template>
       <SettingsLocaleSwitcher />
-    </div>
-  </div>
+    </v-list-group>
+  </v-list>
 </template>
 
 <script lang="ts" setup>

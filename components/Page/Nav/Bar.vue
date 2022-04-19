@@ -1,75 +1,81 @@
 <template>
-  <PageBuilderNavbar>
-    <template #menu>
-      <div id="navbarNav" class="d-none d-lg-block">
-        <!-- Desktop Menu -->
-        <ul class="navbar-nav me-auto">
-          <PageNavLink
-            v-for="(item, i) in menus"
-            :key="i"
-            :item="item"
-            class="mx-1 nav-item"
-            classes="nav-link"
+  <div>
+    <!-- Navbar -->
+    <v-app-bar style="width: 100%">
+      <template #prepend>
+        <NuxtLink to="/">
+          <img
+            class="mx-2 logo d-none d-sm-block"
+            src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"
           />
-        </ul>
-      </div>
+        </NuxtLink>
+        <v-app-bar-nav-icon
+          size="small"
+          icon="fa-regular fa-bars"
+          @click.stop="mainMenu = !mainMenu"
+        ></v-app-bar-nav-icon>
+      </template>
 
-      <!-- Mobile Toggle -->
-      <a
-        class="btn btn-transparent me-auto d-lg-none px-3 mobileMenuToggle custom-icon"
-        rel="nofollow"
-      >
-        <i class="fa-solid fa-bars"></i>
-      </a>
+      <v-app-bar-title>Home</v-app-bar-title>
 
-      <!-- Mobile Menu -->
-      <div
-        id="mobileMenu"
-        class="offcanvas offcanvas-start"
-        tabindex="-1"
-        aria-labelledby="mobileMenuLabel"
-      >
-        <div class="offcanvas-header">
-          <NuxtLink
-            id="mobileMenuLabel"
-            to="/"
-            class="offcanvas-title text-body h6 mobileMenuToggle"
-          >
-            <img
-              class="invert-dark logo"
-              height="42"
-              width="42"
-              alt="Less Borders Logo"
-              src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"
-            />
-            <span class="ms-2 text-red">Cloud</span>
-          </NuxtLink>
-          <button
-            type="button"
-            class="btn btn-transparent"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          >
-            <i class="fa-solid fa-xmark fa-lg"></i>
-          </button>
-        </div>
-        <div class="offcanvas-body p-0">
-          <ul
-            id="mobileMenuList"
-            class="nav flex-column"
-            style="list-style: none"
-          >
-            <PageNavLink
-              v-for="(item, i) in menus"
-              :key="i"
-              :item="item"
-              classes="dropdown-item mobileMenuToggle"
-            />
-          </ul>
-        </div>
-      </div>
-    </template>
-  </PageBuilderNavbar>
+      <v-btn :to="{ name: 'auth-signin' }" color="red" class="me-1">
+        {{ t('pages.login.nav') }}
+      </v-btn>
+      <v-btn
+        size="small"
+        icon="fa-regular fa-sliders"
+        @click.stop="preferenceMenu = !preferenceMenu"
+      />
+    </v-app-bar>
+
+    <!-- Main Menu -->
+    <v-navigation-drawer
+      v-model="mainMenu"
+      temporary
+      rounded
+      position="left"
+      width="380"
+    >
+      <v-toolbar>
+        <NuxtLink to="/" class="d-flex me-auto">
+          <img
+            class="ms-2 me-4 logo"
+            src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"
+          />
+          <v-toolbar-title class="my-auto">Less Borders</v-toolbar-title>
+        </NuxtLink>
+        <v-btn
+          size="small"
+          icon="fa-regular fa-times"
+          @click.stop="mainMenu = !mainMenu"
+        ></v-btn>
+      </v-toolbar>
+      <v-list>
+        <PageNavLink v-for="(item, i) in menu" :key="i" :item="item" />
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Preference Menu -->
+    <v-navigation-drawer
+      v-model="preferenceMenu"
+      temporary
+      rounded
+      position="right"
+      width="380"
+    >
+      <v-toolbar>
+        <v-toolbar-title class="me-auto">
+          {{ $t('components.settings.title') }}
+        </v-toolbar-title>
+        <v-btn
+          size="small"
+          icon="fa-regular fa-times"
+          @click.stop="preferenceMenu = !preferenceMenu"
+        />
+      </v-toolbar>
+      <SettingsMenu />
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -78,25 +84,31 @@ import { IApp } from '~/utils/app'
 export interface IMenuItem {
   type: 'link' | 'button'
   text: string
+  icon?: string
   href?: any
   route?: any
   active?: boolean
-  children?: {
-    type: 'link' | 'button'
-    text: string
-    href?: any
-    route?: any
-    active: boolean
-  }
+  children?: any
 }
 
 const { t } = useLang()
 // const app = useState<IApp>('app')
-const menus = computed((): IMenuItem[] => [
+const menu = computed((): IMenuItem[] => [
   {
     type: 'link',
-    text: t('pages.services.nav'),
-    route: '/',
+    text: t('pages.services.branding.nav'),
+    route: "/",
   },
 ])
+</script>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      mainMenu: false,
+      preferenceMenu: false,
+    }
+  },
+}
 </script>

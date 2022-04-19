@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <VApp>
     <slot name="app-before" />
     <div id="app-before"></div>
     <div class="d-flex flex-column m-vh-100">
       <slot name="header">
-        <PageNavBar />
+        <PageNavBar v-if="isLoggedIn" />
       </slot>
-      <main id="page" class="d-flex col mx-auto">
+      <main id="page" class="d-flex flex-grow-1 my-auto">
         <slot />
       </main>
       <slot name="footer">
@@ -15,15 +15,17 @@
     </div>
     <slot name="app-after" />
     <div id="app-after"></div>
-  </div>
+  </VApp>
 </template>
 
 <script setup>
 const route = useRoute()
 
 if (!route.meta.title) {
-  route.meta.title = 'Cloud'
+  route.meta.title = 'Services for startups, professionals and creators'
 }
+
+let isLoggedIn = false
 
 console.log(route.meta)
 

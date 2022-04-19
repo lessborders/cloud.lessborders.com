@@ -1,9 +1,8 @@
 :root {
-  --lb-primary: var(--lb-black);
-  --lb-primary-highlight: var(--lb-black-highlight);
+  --lb-primary: var(--lb-red);
+  --lb-primary-highlight: var(--lb-red-highlight);
   
-  --lb-link-color: var(--lb-blue);
-  --lb-link-highlight-color: var(--lb-blue);
+  --lb-link-color: var(--lb-red);
 }
 
 $lb-colors: (

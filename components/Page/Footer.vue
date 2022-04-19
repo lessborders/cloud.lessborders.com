@@ -1,85 +1,75 @@
 <template>
   <footer>
-    <div id="footer" class="card-bg pt-5 pb-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-lg-3 mb-4">
-            <h5 class="mb-3">
+    <div id="footer" class="pt-5 pb-3 text-center text-sm-left">
+      <v-container class="grey lighten-5">
+        <v-row>
+          <v-col cols="12" sm="6" lg="3" class="mb-4">
+            <h4 class="mb-3">
               {{ $t('components.footer.connect_with_us') }}
-            </h5>
-            <a
+            </h4>
+            <VBtn
               href="https://instagram.com/less.borders"
               target="_blank"
-              class="btn btn-circle btn-light mb-2 me-2"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a
+              size="small"
+              variant="text"
+              color="primary"
+              class="mb-2 me-2"
+              icon="fa-brands fa-instagram"
+            />
+            <VBtn
               href="https://twitter.com/less_borders"
               target="_blank"
-              class="btn btn-circle btn-light mb-2 me-2"
-            >
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-            <a
+              size="small"
+              variant="text"
+              color="primary"
+              class="mb-2 me-2"
+              icon="fa-brands fa-twitter"
+            />
+            <VBtn
               href="https://facebook.com/lessborders"
               target="_blank"
-              class="btn btn-circle btn-light mb-2 me-2"
-            >
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-          </div>
-          <div class="col-sm-6 col-lg-3 mb-4"></div>
-          <div class="col-sm-6 col-lg-3 mb-4">
-            <h6 class="footer-header">Support</h6>
+              size="small"
+              variant="text"
+              color="primary"
+              class="mb-2 me-2"
+              icon="fa-brands fa-facebook-f"
+            />
+          </v-col>
+          <v-col cols="12" sm="6" lg="3" class="mb-4"></v-col>
+          <v-col cols="12" sm="6" lg="3" class="mb-4">
+            <h4 class="footer-header">Support</h4>
             <ul class="list-style-none">
               <li>
-                <a
-                  href="https://lessborders.com/contact"
-                  target="_blank"
-                  rel="nofollow"
-                >
+                <NuxtLink to="https://lessborders.com/contact">
                   {{ $t('pages.contact.nav') }}
-                </a>
+                </NuxtLink>
               </li>
             </ul>
-          </div>
-          <div class="col-sm-6 col-lg-3 mb-4">
-            <h6 class="footer-header">Legal</h6>
+          </v-col>
+          <v-col cols="12" sm="6" lg="3" class="mb-4">
+            <h4 class="footer-header">Legal</h4>
             <ul class="list-style-none">
               <li>
-                <a
-                  href="https://lessborders.com/legal"
-                  target="_blank"
-                  rel="nofollow"
-                >
+                <NuxtLink to="https://lessborders.com/legal">
                   {{ $t('pages.legal.nav') }}
-                </a>
+                </NuxtLink>
               </li>
               <li>
-                <a
-                  href="https://lessborders.com/legal/terms"
-                  target="_blank"
-                  rel="nofollow"
-                >
+                <NuxtLink to="https://lessborders.com/legal/terms">
                   {{ $t('pages.legal.terms.nav') }}
-                </a>
+                </NuxtLink>
               </li>
               <li>
-                <a
-                  href="https://lessborders.com/legal/privacy"
-                  target="_blank"
-                  rel="nofollow"
-                >
+                <NuxtLink to="https://lessborders.com/legal/privacy">
                   {{ $t('pages.legal.privacy.nav') }}
-                </a>
+                </NuxtLink>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
-    <div id="copyright" class="card-bg">
+    <div id="copyright">
       <div class="container pt-3 pb-4">
         <div class="row">
           <div class="col-12 text-center">

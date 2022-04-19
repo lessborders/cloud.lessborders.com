@@ -1,76 +1,136 @@
 <template>
-  <div class="bg-div main-bg-animated d-flex col">
-    <div class="page-container full-page d-flex col container-md p-4 p-md-5 px-md-0 py-md-5">
-      <div class="col-12 col-md-6 col-lg-7 col-xl-8 d-none d-md-block my-auto">
-          <div class="h2">
-              <strong class="text-red">{{ $t('pages.signin.hero_title') }}</strong> {{ $t('pages.signin.hero_title2') }}<br>
-              {{ $t('pages.signin.hero_title3') }} <strong class="text-red">{{ $t('pages.signin.hero_title4') }}</strong> {{ $t('pages.signin.hero_title5') }}
-          </div>
-      </div>
+  <div class="main-bg-animated d-flex flex-grow-1 pa-0">
+    <v-container class="page-container full-page d-flex">
+      <v-row>
+        <v-col cols="12" md="6" lg="7" xl="8" class="d-none d-md-block my-auto">
+            <h2>
+                <strong class="text-red">{{ $t('pages.signin.hero_title') }}</strong> {{ $t('pages.signin.hero_title2') }}<br>
+                {{ $t('pages.signin.hero_title3') }} <strong class="text-red">{{ $t('pages.signin.hero_title4') }}</strong> {{ $t('pages.signin.hero_title5') }}
+            </h2>
+        </v-col>
 
-      <div class="col-12 col-md-6 col-lg-5 col-xl-4 my-md-auto">
-          <div class="text-center p-4 pb-5 card-bg d-flex position-relative rounded">
-              <div class="d-flex position-absolute top-bar p-2">  
-                  <a v-if="previousUrl" :href="previousUrl" class="btn btn-transparent px-3 me-auto"><i class="fa-regular fa-arrow-left-long"></i></a>
-                  <SettingsButton />
-              </div>
-              <div class="small-container col py-4">
-                  <img class="invert-dark logo mt-5 mb-3" height="42" width="42" alt="Less Borders Logo" src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"/>
-                  <br>
+        <v-col cols="12" md="6" lg="5" xl="4" class="my-md-auto">
+          <div class="small-container mx-auto">
+            <v-card class="text-center">
+              <v-toolbar class="px-2">  
+                  <v-btn 
+                    size="small"
+                    v-if="previousUrl" 
+                    :href="previousUrl" 
+                    icon="fa-regular fa-arrow-left-long" 
+                    class="btn btn-transparent px-3 me-auto" 
+                  />    
+                  <v-btn
+                    size="small"
+                    icon="fa-regular fa-sliders"
+                    @click.stop="preferenceMenu = !preferenceMenu"
+                  />
+              </v-toolbar>
+              <v-card-text class="pb-10">
+                <img class="invert-dark logo mb-3" height="42" width="42" alt="Less Borders Logo" src="https://static.lessborders.com/apps/lessborders/lessborders_logo.svg"/>
+                <br>
+                <h4>{{ $t('pages.signin.title') }}</h4>
+                <p class="mt-2 mb-4">{{ $t('pages.signin.subtitle1') }} <span class="text-red">Cloud</span> {{ $t('pages.signin.subtitle2') }}</p>
 
-                  <h5>{{ $t('pages.signin.title') }}</h5>
-                  <p>{{ $t('pages.signin.subtitle1') }} <span class="text-red">Cloud</span> {{ $t('pages.signin.subtitle2') }}</p>
-                  
-                  <p class="text-red small" v-if="error">{{ error }}</p>
-
-                  <form v-if="currentStep == 1" v-on:submit.prevent="checkUser">
-                      <div class="form-floating mb-2">
-                          <input v-model="email" name="email" type="email" class="form-control" placeholder="Email" required/>
-                          <label for="email">{{ $t('forms.email') }}</label>
-                      </div>
-
-                      <p class="mt-3 text-start meta">
-                          {{ $t('pages.signin.hint1') }}
-                      </p>
-                      
-                      <div class="mt-3 d-flex">
-                          <NuxtLink :to="{ name: 'auth-signup', query: { redirect_url: redirectUrl, previous_url: previousUrl } }" class="me-auto my-auto">{{ $t('pages.signup.nav') }}</NuxtLink>
-                          <button :disabled="loading" type="submit" class="btn btn-primary ms-auto"><span v-if="loading" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> {{ $t('actions.next') }}</button>
-                      </div>
+                <p class="text-red small" v-if="error">{{ error }}</p>
+                
+                  <form id="formEmail" v-if="currentStep == 1" v-on:submit.prevent="checkUser">
+                      <v-text-field
+                        v-model="email"
+                        type="email"
+                        :label="$t('forms.email')"
+                        variant="outlined"
+                        :hint="$t('pages.signin.hint1')"
+                        persistent-hint
+                        required
+                      ></v-text-field>
 
                   </form>
 
-                  <form v-if="currentStep == 2" v-on:submit.prevent="login">
-
-                      <div class="btn btn-sm btn-light mb-4" @click="currentStep--">
-                          {{ email }} &nbsp;<i class="fa fa-angle-down"></i>
-                      </div>
-
-                      <div class="form-floating mb-2">
-                          <input v-model="password" name="password" type="password" class="form-control" placeholder="Password" required/>
-                          <label for="password">{{ $t('forms.password') }}</label>
-                      </div>
-                      
-                      <div class="mt-3 d-flex">
-                          <NuxtLink :to="{ name: 'auth-signup' }" class="me-auto my-auto">{{ $t('pages.signup.forgot_password') }}</NuxtLink>
-
-                          <button v-if="!success" :disabled="loading" type="submit" class="btn btn-primary ms-auto">
-                              <span v-if="loading" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Sign in
-                          </button>
-                          <button v-if="success" disabled type="submit" class="btn btn-green ms-auto">
-                              <i class="fa fa-check"></i>
-                          </button>
-                      </div>
+                  <form id="formPassword" v-if="currentStep == 2" v-on:submit.prevent="login">
+                      <v-chip
+                        class="mb-4 text-body"
+                        append-icon="fa-regular fa-angle-down"
+                        @click="currentStep--"
+                      >
+                        {{ email }}
+                      </v-chip>
+                      <v-text-field
+                        v-model="password"
+                        class="clickable"
+                        variant="outlined"
+                        :append-icon="showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'"
+                        @click:append="() => (showPassword = !showPassword)"
+                        :type="showPassword ? 'text' : 'password'"
+                        :label="$t('forms.password')"
+                        required
+                      ></v-text-field>
                   </form>
-              </div>
+              </v-card-text>
+              <v-card-actions v-if="currentStep == 1">
+                <v-btn
+                  :to="{ name: 'auth-signup', query: { redirectUrl: redirectUrl, previousUrl: previousUrl } }"
+                  variant="text"
+                > 
+                  {{ $t('pages.signup.nav') }}
+                </v-btn>
+                <v-btn
+                  variant="text"
+                  color="red"
+                  class="ms-auto"
+                  form="formEmail"
+                  type="submit"
+                > 
+                  {{ $t('actions.next') }}
+                </v-btn>
+              </v-card-actions>
+              <v-card-actions v-if="currentStep == 2">
+                <v-btn
+                  variant="text"
+                > 
+                  {{ $t('pages.signup.forgot_password') }}
+                </v-btn>
+                <v-btn
+                  variant="text"
+                  color="red"
+                  class="ms-auto"
+                  form="formPassword"
+                  type="submit"
+                > 
+                  {{ $t('pages.signin.title') }}
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </div>
-      </div>
-    </div>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <!-- Preference Menu -->
+    <v-navigation-drawer
+      v-model="preferenceMenu"
+      temporary
+      rounded
+      position="right"
+      width="380"
+    >
+      <v-toolbar>
+        <v-toolbar-title class="me-auto">
+          {{ $t('components.settings.title') }}
+        </v-toolbar-title>
+        <v-btn
+          size="small"
+          icon="fa-regular fa-times"
+          @click.stop="preferenceMenu = !preferenceMenu"
+        />
+      </v-toolbar>
+      <SettingsMenu />
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
-  import authenticationService from '../../services/AuthenticationService.ts'
+  import authenticationService from '../../services/AuthenticationService'
 
   export default {
     setup () {
@@ -88,7 +148,9 @@
         error: null,
         success: false,
         loading: false,
-        currentStep: 1
+        currentStep: 1,
+        preferenceMenu: false,
+        showPassword: false,
       }
     },
     methods: {

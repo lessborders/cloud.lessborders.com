@@ -37,7 +37,7 @@ pages:
     nav: Create account
     title: Create your
     title2: account
-    closed: Registration is currently closed
+    closed: Registration is closed
     signin: Sign in instead
     forgot_password: Forgot password?
   signin:
@@ -58,3 +58,8 @@ actions:
   save: Save
   next: Next
   send: Send
+errors:
+  back: "Take me back!"
+  404:
+    title: "Uh oh! You're lost."
+    description: "The page you are looking for does not exist or has been moved. Don't worry - just click the button below to go back."
